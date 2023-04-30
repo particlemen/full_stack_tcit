@@ -1,0 +1,30 @@
+version: "3.8"
+   
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=tcit
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  express:
+    image: node
+    build: 
+      context: .
+      dockerfile: node.dockerfile
+    container_name: node
+    command: node "backend/server/index.js"
+    restart: always
+    volumes:
+      - ./backend:/usr/app/backend
+    depends_on:
+      - db
+    ports:
+      - 3001:3001
+    working_dir: /usr/app/
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/tcit
