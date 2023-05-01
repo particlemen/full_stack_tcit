@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-
-
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { 
+  deletePost
+} from '../postsTable/postsTableSlice';
+import axios from 'axios';
 
 export function Post({ name, description, id }) {
 
-  const deletePost = (postId) => {
-    console.log(postId)
+  const dispatch = useDispatch();
+
+
+  const deletePostFromTable = (postId) => {
+    axios.post("http://localhost:3001/posts/deletePost", {id: postId})
+    .then( (res) => {
+      if (res.data.success) {
+        dispatch(deletePost(postId));
+      }
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
+
   } 
 
   return(
@@ -18,7 +31,7 @@ export function Post({ name, description, id }) {
         <button
             className="delete"
             aria-label="Delete Post"
-            onClick={() => deletePost(id)}
+            onClick={() => deletePostFromTable(id)}
         >
         Delete
         </button>

@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+  margin-bottom: 5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -36,4 +37,13 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+.th {
+  margin-left: 3rem;
+}
+
+input {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
