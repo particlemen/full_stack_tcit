@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
-import { Counter } from './features/counter/Counter';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
   addPosts,

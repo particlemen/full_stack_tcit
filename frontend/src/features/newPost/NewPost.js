@@ -34,6 +34,7 @@ export const NewPost = () => {
         placeholder="Description"
       />
       <button
+        className = "button-3"
         onClick={() => newPost(newName, newDescription)}
       >
         Add new post

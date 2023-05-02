@@ -29,7 +29,7 @@ export function Post({ name, description, id }) {
       <td> {description} </td>
       <td>
         <button
-            className="delete"
+            className="button-1"
             aria-label="Delete Post"
             onClick={() => deletePostFromTable(id)}
         >

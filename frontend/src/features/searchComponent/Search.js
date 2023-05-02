@@ -17,6 +17,7 @@ export function Search() {
         value={searchKeyWord}
       />
       <button
+        className="button-4"
         aria-label="Do the search"
         onClick={() => dispatch(updateSearchKeyWord(searchKeyWord.trim()))}
       >
